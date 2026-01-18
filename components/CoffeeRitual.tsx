@@ -33,7 +33,7 @@ export const CoffeeRitual: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen py-24 px-6 flex flex-col items-center justify-center bg-[#f0f0f0]">
+    <section className="relative min-h-screen py-24 px-6 flex flex-col items-center justify-center bg-background">
         <div className="max-w-4xl w-full border border-gold/20 p-8 md:p-16 rounded-sm bg-white shadow-[0_20px_60px_rgba(0,0,0,0.05)] relative overflow-hidden">
             {/* Background Accent */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-red-100/30 blur-[100px] pointer-events-none"></div>

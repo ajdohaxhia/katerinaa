@@ -35,7 +35,7 @@ export const BanzoneSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative py-32 px-6 md:px-20 bg-surface overflow-hidden">
+    <section ref={containerRef} className="relative py-32 px-6 md:px-20 bg-background overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
             
             {/* Text Content */}

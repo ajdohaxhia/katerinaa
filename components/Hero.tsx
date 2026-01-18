@@ -23,8 +23,8 @@ export const Hero: React.FC = () => {
     // Heartbeat animation for the title
     gsap.to(titleRef.current, {
         scale: 1.05,
-        color: "#ebdcb2", // subtle shift to lighter gold
-        textShadow: "0 0 20px rgba(212, 175, 55, 0.3)",
+        color: "#b08d26", // darker gold for light theme
+        textShadow: "0 0 30px rgba(176, 141, 38, 0.2)", // Softer shadow for light bg
         repeat: -1,
         yoyo: true,
         duration: 0.8, // Faster, like a heartbeat
@@ -51,28 +51,28 @@ export const Hero: React.FC = () => {
       ref={containerRef}
       className="relative h-screen flex flex-col items-center justify-center px-6 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-surface/20 via-background to-background z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-background to-background z-0 pointer-events-none" />
       
       <div className="z-10 text-center">
         <h1 
           ref={titleRef}
-          className="font-serif text-5xl md:text-8xl lg:text-[9rem] leading-none text-offwhite tracking-widest uppercase opacity-0 transform-gpu mix-blend-exclusion"
+          className="font-serif text-5xl md:text-8xl lg:text-[9rem] leading-none text-offwhite tracking-widest uppercase opacity-0 transform-gpu mix-blend-darken"
         >
           <span className="italic text-gold block md:inline text-[0.6em] align-middle">My</span> Katerina
         </h1>
         <div className="mt-8 md:mt-16 overflow-hidden">
           <p 
             ref={subtitleRef}
-            className="font-sans font-thin text-xs md:text-sm tracking-[0.4em] text-gold/80 uppercase opacity-0 flex items-center justify-center gap-2"
+            className="font-sans font-medium text-xs md:text-sm tracking-[0.2em] text-gold uppercase opacity-0 flex flex-col md:flex-row items-center justify-center gap-2"
           >
-            <span>Un'opera senza tempo</span>
-            <span className="text-red-800 animate-pulse">❤️</span>
-            <span>del tuo Porceddo</span>
+            <span>Fatto con tanto affetto</span>
+            <span className="text-blood animate-pulse mx-1">e perversione</span>
+            <span>da Ade, il porceddo</span>
           </p>
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-pulse-slow opacity-30">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-pulse-slow opacity-60">
         <p className="text-[10px] tracking-widest uppercase text-offwhite/40 mb-2 text-center">Scorri Piano</p>
         <div className="w-[1px] h-12 bg-gradient-to-b from-gold to-transparent mx-auto"></div>
       </div>

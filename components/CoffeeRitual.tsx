@@ -33,10 +33,10 @@ export const CoffeeRitual: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen py-24 px-6 flex flex-col items-center justify-center bg-[#080808]">
-        <div className="max-w-4xl w-full border border-gold/10 p-8 md:p-16 rounded-sm bg-gradient-to-b from-[#121212] to-[#050505] shadow-[0_0_50px_rgba(0,0,0,0.8)] relative overflow-hidden">
+    <section className="relative min-h-screen py-24 px-6 flex flex-col items-center justify-center bg-[#f0f0f0]">
+        <div className="max-w-4xl w-full border border-gold/20 p-8 md:p-16 rounded-sm bg-white shadow-[0_20px_60px_rgba(0,0,0,0.05)] relative overflow-hidden">
             {/* Background Accent */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-red-900/5 blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-red-100/30 blur-[100px] pointer-events-none"></div>
 
             <h2 className="font-serif text-3xl md:text-5xl text-center mb-12 text-gold/90">
                 Il Nostro Rituale <span className="text-blood">Hot</span>
@@ -46,41 +46,41 @@ export const CoffeeRitual: React.FC = () => {
                 
                 {/* Visual Representation of Machine */}
                 <div className={`relative w-48 h-64 transition-transform duration-500 ${state === 'broken' ? 'shaking' : ''}`}>
-                    {/* Machine Body */}
+                    {/* Machine Body - Lighter Styling */}
                     <div className={`absolute inset-0 rounded-t-[40px] rounded-b-md border-2 transition-colors duration-500 ${
-                        state === 'broken' ? 'bg-blood/20 border-blood shadow-[0_0_20px_rgba(100,0,0,0.5)]' : 
-                        state === 'watery' ? 'bg-blue-900/10 border-blue-900/30' :
-                        'bg-zinc-900 border-zinc-700 shadow-xl'
+                        state === 'broken' ? 'bg-red-50 border-blood shadow-[0_0_20px_rgba(138,0,0,0.2)]' : 
+                        state === 'watery' ? 'bg-blue-50 border-blue-200' :
+                        'bg-slate-100 border-slate-300 shadow-xl'
                     }`}></div>
 
                     {/* Group Head */}
-                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-16 h-8 bg-neutral-800 rounded-sm shadow-lg border-b-4 border-neutral-950"></div>
+                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-16 h-8 bg-slate-200 rounded-sm shadow-lg border-b-4 border-slate-400"></div>
                     
                     {/* Spout */}
-                    <div className="absolute top-[calc(33%+32px)] left-1/2 -translate-x-1/2 w-2 h-4 bg-neutral-600"></div>
+                    <div className="absolute top-[calc(33%+32px)] left-1/2 -translate-x-1/2 w-2 h-4 bg-slate-400"></div>
 
                     {/* Drip Stream */}
                     {(state === 'brewing' || state === 'done' || state === 'watery') && (
                          <div className={`absolute top-[calc(33%+48px)] left-1/2 -translate-x-1/2 w-1 
-                            ${state === 'watery' ? 'bg-blue-400/30' : 'bg-[#3f2a1d]'} 
+                            ${state === 'watery' ? 'bg-blue-200' : 'bg-[#3f2a1d]'} 
                             transition-all duration-1000 origin-top
                             ${state === 'brewing' ? 'h-16 animate-pulse' : state === 'done' ? 'h-0 opacity-0' : 'h-16 opacity-50'}
                          `}></div>
                     )}
 
                     {/* Cup */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-10 bg-white/90 rounded-b-xl rounded-t-sm shadow-[0_0_15px_rgba(255,255,255,0.1)] flex items-end justify-center overflow-hidden">
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-10 bg-white rounded-b-xl rounded-t-sm shadow-md border border-gray-100 flex items-end justify-center overflow-hidden">
                         <div className={`w-full transition-all duration-[2000ms] ease-linear 
-                            ${state === 'brewing' ? 'h-0' : state === 'done' ? 'h-3/4' : state === 'watery' ? 'h-3/4 bg-blue-100/50' : 'h-0'}
+                            ${state === 'brewing' ? 'h-0' : state === 'done' ? 'h-3/4' : state === 'watery' ? 'h-3/4 bg-blue-50' : 'h-0'}
                             ${state !== 'watery' ? 'bg-[#3f2a1d]' : ''}
                         `}></div>
                     </div>
                     
-                    {/* Steam */}
+                    {/* Steam - Darker for visibility */}
                     {state === 'done' && (
-                        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-1 opacity-60">
-                            <span className="w-1 h-4 bg-white blur-sm rounded-full animate-[ping_1.5s_infinite]"></span>
-                            <span className="w-1 h-6 bg-white blur-sm rounded-full animate-[ping_1.8s_infinite_0.2s]"></span>
+                        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-1 opacity-40">
+                            <span className="w-1 h-4 bg-gray-400 blur-sm rounded-full animate-[ping_1.5s_infinite]"></span>
+                            <span className="w-1 h-6 bg-gray-400 blur-sm rounded-full animate-[ping_1.8s_infinite_0.2s]"></span>
                         </div>
                     )}
 
@@ -94,26 +94,26 @@ export const CoffeeRitual: React.FC = () => {
                 <div className="flex flex-col gap-6 w-full md:w-auto">
                     <button 
                         onClick={handleEspresso}
-                        className="group px-8 py-3 border border-gold/30 text-gold hover:bg-gold hover:text-background transition-all uppercase tracking-widest text-xs font-bold font-sans relative overflow-hidden"
+                        className="group px-8 py-3 border border-gold text-gold hover:bg-gold hover:text-white transition-all uppercase tracking-widest text-xs font-bold font-sans relative overflow-hidden"
                     >
                         <span className="relative z-10">Espresso</span>
-                        <div className="absolute inset-0 bg-gold/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                        <div className="absolute inset-0 bg-gold/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
                     </button>
                     <button 
                         onClick={handleDeka}
-                        className="px-8 py-3 border border-white/5 text-white/30 hover:bg-white/5 hover:text-white/60 transition-all uppercase tracking-widest text-xs font-bold font-sans"
+                        className="px-8 py-3 border border-gray-300 text-gray-400 hover:bg-gray-100 hover:text-gray-500 transition-all uppercase tracking-widest text-xs font-bold font-sans"
                     >
                         Deka
                     </button>
                     <button 
                         onClick={handleCapciocc}
-                        className="px-8 py-3 border border-blood/50 text-blood hover:bg-blood hover:text-offwhite transition-all uppercase tracking-widest text-xs font-bold font-sans hover:shadow-[0_0_20px_rgba(100,0,0,0.4)]"
+                        className="px-8 py-3 border border-blood/30 text-blood hover:bg-blood hover:text-white transition-all uppercase tracking-widest text-xs font-bold font-sans hover:shadow-[0_4px_20px_rgba(138,0,0,0.2)]"
                     >
                         Capciocc
                     </button>
 
                     {state === 'broken' && (
-                        <button onClick={reset} className="mt-4 text-[10px] text-zinc-500 underline hover:text-gold transition-colors">
+                        <button onClick={reset} className="mt-4 text-[10px] text-gray-500 underline hover:text-gold transition-colors">
                             Dai, fai la brava. Riavvia.
                         </button>
                     )}
@@ -124,8 +124,8 @@ export const CoffeeRitual: React.FC = () => {
             <div className="mt-16 text-center h-8">
                 <p className={`font-serif text-xl italic transition-all duration-300 ${
                     state === 'broken' ? 'text-blood font-bold scale-110' : 
-                    state === 'done' ? 'text-gold drop-shadow-md' : 
-                    state === 'watery' ? 'text-blue-300/50' : 'text-offwhite/80'
+                    state === 'done' ? 'text-gold' : 
+                    state === 'watery' ? 'text-blue-300' : 'text-gray-500'
                 }`}>
                     {message}
                 </p>

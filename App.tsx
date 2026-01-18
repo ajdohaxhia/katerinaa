@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Hero } from './components/Hero';
 import { Gallery } from './components/Gallery';
 import { VideoSection } from './components/VideoSection';
+import { BanzoneSection } from './components/BanzoneSection';
 import { CoffeeRitual } from './components/CoffeeRitual';
 import { SecretButton } from './components/SecretButton';
 import { FloatingBackground } from './components/FloatingBackground';
@@ -51,25 +52,27 @@ export default function App() {
   }, []);
 
   return (
-    // Removed overflow-x-hidden from here, relying on body styles to prevent scroll locking issues
-    <div className="relative min-h-screen bg-background text-offwhite font-sans">
+    // Updated text color class will use the new definition of offwhite (which is now dark)
+    <div className="relative min-h-screen bg-background text-offwhite font-sans selection:bg-blood/20 selection:text-blood">
       {/* Noise Overlay */}
       <div className="noise-bg"></div>
 
       {/* Floating Emojis (Pigs & Hearts) */}
       <FloatingBackground />
 
-      {/* Dynamic Spotlight Effect */}
+      {/* Dynamic Spotlight Effect - Adapted for Light Theme */}
+      {/* Red accent shadow */}
       <div 
-        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 mix-blend-screen"
+        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 mix-blend-multiply opacity-20"
         style={{
-          background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(100, 20, 20, 0.08), transparent 40%)`
+          background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(138, 0, 0, 0.08), transparent 40%)`
         }}
       />
+      {/* Gold accent shadow */}
       <div 
-        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 mix-blend-soft-light"
+        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 mix-blend-multiply opacity-30"
         style={{
-          background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(212, 175, 55, 0.1), transparent 40%)`
+          background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(176, 141, 38, 0.15), transparent 40%)`
         }}
       />
 
@@ -78,6 +81,7 @@ export default function App() {
         <Hero />
         <Gallery />
         <VideoSection />
+        <BanzoneSection />
         <CoffeeRitual />
         
         <footer className="py-32 text-center">

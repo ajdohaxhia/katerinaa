@@ -12,12 +12,12 @@
         theme: {
           extend: {
             colors: {
-              background: '#050505', /* Much darker black */
-              surface: '#0a0a0a',   /* Barely visible gray */
-              gold: '#d4af37',
-              'gold-dim': '#8a7018',
-              offwhite: '#e0e0e0',
-              blood: '#590000',     /* Richer red */
+              background: '#f9f9f9', /* Light Theme: Ivory/Paper white */
+              surface: '#ffffff',   /* Pure White */
+              gold: '#b08d26',      /* Darker Gold for visibility on light bg */
+              'gold-dim': '#d4af37',
+              offwhite: '#1a1a1a',  /* REVERSED: Dark gray for text */
+              blood: '#8a0000',     /* Deep Red Accent */
             },
             fontFamily: {
               serif: ['"Cormorant Garamond"', 'serif'],
@@ -46,10 +46,9 @@
         min-height: 100%;
         margin: 0;
         padding: 0;
-        background-color: #050505;
-        color: #e5e5e5;
-        overflow-x: hidden; /* Prevent horizontal scroll */
-        /* overflow-y is handled by Lenis or browser default, do not hide it */
+        background-color: #f9f9f9; /* Light Theme Background */
+        color: #1a1a1a; /* Dark Text */
+        overflow-x: hidden;
       }
       
       /* Lenis Recommended CSS */
@@ -73,7 +72,7 @@
         pointer-events: none;
       }
 
-      /* Noise Overlay - slightly darker blend */
+      /* Noise Overlay - Updated for Light Theme */
       .noise-bg {
         position: fixed;
         top: 0;
@@ -82,9 +81,10 @@
         height: 100%;
         pointer-events: none;
         z-index: 9999;
-        opacity: 0.03;
-        mix-blend-mode: overlay;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.4;
+        /* Multiply is better for adding noise to white backgrounds */
+        mix-blend-mode: multiply; 
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
 
       /* Custom Utilities */
@@ -110,8 +110,8 @@
 
       /* Sexy Text Selection */
       ::selection {
-        background: rgba(212, 175, 55, 0.3);
-        color: white;
+        background: rgba(138, 0, 0, 0.1); /* Blood red selection */
+        color: #8a0000;
       }
     </style>
   <script type="importmap">

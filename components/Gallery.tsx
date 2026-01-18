@@ -63,13 +63,13 @@ export const Gallery: React.FC = () => {
             {galleryItems.map((item, index) => (
                 <div 
                     key={item.id}
-                    className="group relative flex-shrink-0 w-full md:w-[50vh] aspect-[2/3] bg-[#0a0a0a] overflow-hidden transition-all duration-[1.5s] ease-out hover:scale-[1.02] shadow-2xl border border-white/5"
+                    className="group relative flex-shrink-0 w-full md:w-[50vh] aspect-[2/3] bg-white overflow-hidden transition-all duration-[1.5s] ease-out hover:scale-[1.02] shadow-2xl border border-black/5"
                 >
-                    {/* Media Render Logic */}
+                    {/* Media Render Logic - Full Color by Default */}
                     {item.type === 'video' ? (
                          <video
                             src={item.src}
-                            className="w-full h-full object-contain p-4 filter grayscale opacity-60 transition-all duration-[1.2s] ease-in-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
+                            className="w-full h-full object-contain p-4 transition-all duration-[1.2s] ease-in-out group-hover:scale-105"
                             autoPlay
                             muted
                             loop
@@ -79,12 +79,10 @@ export const Gallery: React.FC = () => {
                         <img 
                             src={item.src}
                             alt={item.label}
-                            className="w-full h-full object-contain p-2 filter grayscale opacity-60 transition-all duration-[1.2s] ease-in-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
+                            className="w-full h-full object-contain p-2 transition-all duration-[1.2s] ease-in-out group-hover:scale-105"
                             loading="lazy"
                         />
                     )}
-                    
-                    {/* Clean look: Text overlays and numbers removed as requested */}
                 </div>
             ))}
             

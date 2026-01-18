@@ -13,11 +13,11 @@ type GalleryItem = {
 };
 
 const galleryItems: GalleryItem[] = [
-  { id: 1, type: 'image', label: "Desiderio", caption: "Il primo sguardo.", src: "https://picsum.photos/seed/421/800/1200" },
-  { id: 2, type: 'image', label: "Intimità", caption: "Solo noi due.", src: "https://picsum.photos/seed/422/800/1200" },
-  { id: 3, type: 'image', label: "Passione", caption: "Il fuoco che non si spegne.", src: "https://lh3.googleusercontent.com/d/1mBiQh5kFL_AlVmOci9tD9o6SuJjhKeHx" }, 
-  { id: 4, type: 'video', label: "Ricordi", caption: "Momenti solo nostri.", src: "https://drive.google.com/uc?export=download&id=1MNL-uQGy8na_v43ni_8E7AqZz737Q5E8" }, 
-  { id: 5, type: 'image', label: "Eternità", caption: "Io e te, Porcedda.", src: "https://lh3.googleusercontent.com/d/17hs7djAhu4EHlWOtkhhkDfyYF_0iL4N4" }, // New photo added here
+  { id: 1, type: 'image', label: "Desiderio", caption: "Il primo sguardo.", src: "https://lh3.googleusercontent.com/d/1yWZ9vzDtz23L6TG8NqJntYkQEwvg_m0K" }, 
+  { id: 2, type: 'image', label: "Intimità", caption: "Solo noi due.", src: "https://lh3.googleusercontent.com/d/1kCC3OVFEUrK-kdl9AVKWB87y_dEOpR-f" }, 
+  { id: 3, type: 'image', label: "Passione", caption: "Il fuoco che non si spegne.", src: "https://lh3.googleusercontent.com/d/1jt5qz1g-3asg-dk4ck0imEv0OtCSoItS" }, 
+  { id: 4, type: 'image', label: "Ricordi", caption: "Momenti solo nostri.", src: "https://lh3.googleusercontent.com/d/1hWJSPYo2U8qRvRX_vDv0UXF6EdTKWVgQ" }, // Updated from video to image
+  { id: 5, type: 'image', label: "Eternità", caption: "Io e te, Porcedda.", src: "https://lh3.googleusercontent.com/d/17hs7djAhu4EHlWOtkhhkDfyYF_0iL4N4" },
 ];
 
 export const Gallery: React.FC = () => {
@@ -84,24 +84,7 @@ export const Gallery: React.FC = () => {
                         />
                     )}
                     
-                    {/* Minimal Overlay */}
-                    <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-100 pointer-events-none">
-                         {/* Line */}
-                        <div className="w-0 group-hover:w-12 h-[1px] bg-gold mb-4 transition-all duration-1000 delay-100 ease-out"></div>
-                        
-                        <span className="font-serif text-4xl text-transparent stroke-white group-hover:text-offwhite transition-all duration-1000 ease-out italic translate-y-4 group-hover:translate-y-0" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}>
-                            {item.label}
-                        </span>
-                        
-                        {/* Caption (appears on hover) */}
-                        <p className="font-sans text-xs text-gold mt-2 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-200">
-                            {item.caption}
-                        </p>
-                    </div>
-
-                    <div className="absolute top-4 right-4 font-sans text-[10px] tracking-widest text-gold/30">
-                        N° 0{index + 1}
-                    </div>
+                    {/* Clean look: Text overlays and numbers removed as requested */}
                 </div>
             ))}
             

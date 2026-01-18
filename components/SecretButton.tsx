@@ -68,7 +68,7 @@ export const SecretButton: React.FC = () => {
                     {/* Image Container - Frameless & Full Image */}
                     <div className="relative w-full h-full shadow-[0_0_100px_rgba(212,175,55,0.15)] animate-[scaleIn_0.6s_cubic-bezier(0.16,1,0.3,1)]">
                          <img 
-                            src="https://i.ibb.co/WWmfDMkj/sorpresa.avif" 
+                            src="https://lh3.googleusercontent.com/d/1FWOQyd4Pntv_6Sefe2da4ArMMh57PsOS" 
                             alt="Sorpresa per te"
                             className="w-full h-full object-contain rounded-sm"
                         />

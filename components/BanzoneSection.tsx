@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -8,6 +8,10 @@ export const BanzoneSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
+  const videoElRef = useRef<HTMLVideoElement>(null);
+  
+  const [isMuted, setIsMuted] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -34,6 +38,20 @@ export const BanzoneSection: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  const toggleAudio = () => {
+    if (videoElRef.current) {
+        videoElRef.current.muted = !videoElRef.current.muted;
+        setIsMuted(videoElRef.current.muted);
+        if (!videoElRef.current.muted) {
+            videoElRef.current.play().catch(e => console.log("Playback error", e));
+        }
+    }
+  };
+
+  const handleError = () => {
+    setHasError(true);
+  };
+
   return (
     <section ref={containerRef} className="relative py-32 px-6 md:px-20 bg-background overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
@@ -50,20 +68,49 @@ export const BanzoneSection: React.FC = () => {
                 </p>
                 
                 {/* Decorative Line */}
-                <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-blood to-transparent mx-auto md:ml-auto md:mr-0"></div>
+                <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-blood to-transparent mx-auto md:ml-auto md:mr-0 mb-8"></div>
+                
+                {/* Audio Toggle Button (External) */}
+                <button 
+                    onClick={toggleAudio}
+                    className="group inline-flex items-center gap-3 px-6 py-3 border border-blood/30 rounded-full hover:bg-blood hover:text-white transition-all duration-300"
+                >
+                    <span className="text-lg">{isMuted ? '🔇' : '🔊'}</span>
+                    <span className="text-xs font-bold uppercase tracking-widest">
+                        {isMuted ? 'Attiva Audio' : 'Disattiva'}
+                    </span>
+                </button>
             </div>
 
             {/* Video Container */}
             <div ref={videoRef} className="flex-1 order-1 md:order-2 w-full flex justify-center md:justify-start">
-                <div className="relative w-full max-w-xs aspect-[9/16] rounded-t-full rounded-b-full md:rounded-2xl overflow-hidden border-[6px] border-white shadow-[0_30px_60px_rgba(138,0,0,0.1)] bg-gray-100 transform rotate-[-2deg] hover:rotate-0 transition-transform duration-700 ease-out">
-                     <video
-                        className="w-full h-full object-cover" 
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        src="https://drive.google.com/uc?export=download&id=1pDXejnRbUaDj7WDIV2mrRVZ8veHEtfqw"
-                     />
+                <div className="relative w-full max-w-xs aspect-[9/16] rounded-t-full rounded-b-full md:rounded-2xl overflow-hidden border-[6px] border-white shadow-[0_30px_60px_rgba(138,0,0,0.1)] bg-gray-100 transform rotate-[-2deg] hover:rotate-0 transition-transform duration-700 ease-out group">
+                     
+                     {!hasError ? (
+                         <video
+                            ref={videoElRef}
+                            className="w-full h-full object-cover" 
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            onError={handleError}
+                            src="https://drive.google.com/uc?export=download&id=1pDXejnRbUaDj7WDIV2mrRVZ8veHEtfqw"
+                         />
+                     ) : (
+                         /* Fallback if Drive blocks embed */
+                         <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-200 text-gray-500 p-6 text-center">
+                             <p className="text-xs uppercase tracking-widest mb-4">Video non caricato</p>
+                             <a 
+                                href="https://drive.google.com/file/d/1pDXejnRbUaDj7WDIV2mrRVZ8veHEtfqw/view?usp=sharing"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-4 py-2 bg-blood text-white text-xs font-bold uppercase rounded hover:bg-red-900 transition-colors"
+                             >
+                                Apri su Drive
+                             </a>
+                         </div>
+                     )}
                      
                      {/* Overlay Shine */}
                      <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-white/20 pointer-events-none mix-blend-overlay"></div>

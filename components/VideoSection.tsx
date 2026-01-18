@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const VideoSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -49,14 +50,29 @@ export const VideoSection: React.FC = () => {
             ref={videoWrapperRef}
             className="relative w-full max-w-sm md:max-w-md aspect-[9/16] rounded-sm overflow-hidden border border-gold/20 shadow-[0_20px_50px_rgba(176,141,38,0.15)] bg-white"
         >
-             <video
-                className="w-full h-full object-cover" 
-                autoPlay
-                muted
-                loop
-                playsInline
-                src="https://drive.google.com/uc?export=download&id=1MNL-uQGy8na_v43ni_8E7AqZz737Q5E8"
-             />
+             {!hasError ? (
+                 <video
+                    className="w-full h-full object-cover" 
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    onError={() => setHasError(true)}
+                    src="https://drive.google.com/uc?export=download&id=1MNL-uQGy8na_v43ni_8E7AqZz737Q5E8"
+                 />
+             ) : (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-200 text-gray-500 p-6 text-center">
+                    <p className="text-xs uppercase tracking-widest mb-4">Impossibile caricare</p>
+                    <a 
+                    href="https://drive.google.com/file/d/1MNL-uQGy8na_v43ni_8E7AqZz737Q5E8/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 border border-gold text-gold text-xs font-bold uppercase rounded hover:bg-gold hover:text-white transition-colors"
+                    >
+                    Vedi Video
+                    </a>
+                </div>
+             )}
              
              {/* Cinematic Vignette - Lighter for Light Theme */}
              <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.1)] mix-blend-multiply"></div>

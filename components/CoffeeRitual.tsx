@@ -24,7 +24,7 @@ export const CoffeeRitual: React.FC = () => {
 
   const handleCapciocc = () => {
     setState('broken');
-    setMessage("Capciocc: BOOM! Hai rotto tutto. Sei la solita ❤️");
+    setMessage("Capciocc: Non esce un cazzo ahhahah");
   };
 
   const reset = () => {

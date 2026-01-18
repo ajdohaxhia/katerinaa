@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Hero } from './components/Hero';
 import { Gallery } from './components/Gallery';
+import { VideoSection } from './components/VideoSection';
 import { CoffeeRitual } from './components/CoffeeRitual';
 import { SecretButton } from './components/SecretButton';
 import { FloatingBackground } from './components/FloatingBackground';
@@ -76,6 +77,7 @@ export default function App() {
       <main className="relative z-10">
         <Hero />
         <Gallery />
+        <VideoSection />
         <CoffeeRitual />
         
         <footer className="py-32 text-center">

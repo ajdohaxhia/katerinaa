@@ -16,7 +16,7 @@ const galleryItems: GalleryItem[] = [
   { id: 1, type: 'image', label: "Desiderio", caption: "Il primo sguardo.", src: "https://lh3.googleusercontent.com/d/1yWZ9vzDtz23L6TG8NqJntYkQEwvg_m0K" }, 
   { id: 2, type: 'image', label: "Intimità", caption: "Solo noi due.", src: "https://lh3.googleusercontent.com/d/1kCC3OVFEUrK-kdl9AVKWB87y_dEOpR-f" }, 
   { id: 3, type: 'image', label: "Passione", caption: "Il fuoco che non si spegne.", src: "https://lh3.googleusercontent.com/d/1jt5qz1g-3asg-dk4ck0imEv0OtCSoItS" }, 
-  { id: 4, type: 'image', label: "Ricordi", caption: "Momenti solo nostri.", src: "https://lh3.googleusercontent.com/d/1hWJSPYo2U8qRvRX_vDv0UXF6EdTKWVgQ" }, // Updated from video to image
+  { id: 4, type: 'image', label: "Ricordi", caption: "Momenti solo nostri.", src: "https://lh3.googleusercontent.com/d/1hWJSPYo2U8qRvRX_vDv0UXF6EdTKWVgQ" },
   { id: 5, type: 'image', label: "Eternità", caption: "Io e te, Porcedda.", src: "https://lh3.googleusercontent.com/d/17hs7djAhu4EHlWOtkhhkDfyYF_0iL4N4" },
 ];
 
@@ -63,13 +63,13 @@ export const Gallery: React.FC = () => {
             {galleryItems.map((item, index) => (
                 <div 
                     key={item.id}
-                    className="group relative flex-shrink-0 w-full md:w-[50vh] aspect-[2/3] bg-[#0a0a0a] overflow-hidden transition-all duration-[1.5s] ease-out hover:scale-[1.02] shadow-2xl"
+                    className="group relative flex-shrink-0 w-full md:w-[50vh] aspect-[2/3] bg-[#0a0a0a] overflow-hidden transition-all duration-[1.5s] ease-out hover:scale-[1.02] shadow-2xl border border-white/5"
                 >
                     {/* Media Render Logic */}
                     {item.type === 'video' ? (
                          <video
                             src={item.src}
-                            className="w-full h-full object-cover filter grayscale opacity-60 transition-all duration-[1.2s] ease-in-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+                            className="w-full h-full object-contain p-4 filter grayscale opacity-60 transition-all duration-[1.2s] ease-in-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
                             autoPlay
                             muted
                             loop
@@ -79,7 +79,7 @@ export const Gallery: React.FC = () => {
                         <img 
                             src={item.src}
                             alt={item.label}
-                            className="w-full h-full object-cover filter grayscale opacity-60 transition-all duration-[1.2s] ease-in-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+                            className="w-full h-full object-contain p-2 filter grayscale opacity-60 transition-all duration-[1.2s] ease-in-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
                             loading="lazy"
                         />
                     )}
